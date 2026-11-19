@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ConfigCompany</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{color-scheme:dark;--bg:#050312;--gl:rgba(86,62,230,.10);--gb:rgba(135,112,255,.28);--tx:#eceaff;--mu:#9a95c8;--a1:#7b5cff;--a2:#4f7bff;--cy:#2bd3ff;--ok:#18c97c;--gd:#f5b93a;--wr:#ff9a5c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--tx);font:400 14px/1.7 Vazirmatn,Tahoma,sans-serif;background:radial-gradient(600px 380px at 85% -5%,rgba(110,70,255,.45),transparent 70%),radial-gradient(500px 420px at 0% 60%,rgba(60,50,200,.28),transparent 70%),var(--bg);background-attachment:fixed;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+main{max-width:480px;margin:0 auto;padding:12px 14px}
+h1{font-size:18px;margin:6px 0}h2{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.mu{color:var(--mu);font-size:12.5px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card{background:linear-gradient(160deg,rgba(110,84,255,.16),var(--gl) 55%);border:1px solid var(--gb);border-radius:22px;padding:16px;margin-top:12px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 40px rgba(60,30,200,.18),inset 0 1px 0 rgba(255,255,255,.06)}
+.top{display:flex;align-items:center;gap:10px}
+.pill{flex:1;display:flex;align-items:center;gap:10px;padding:6px 10px;border:1px solid var(--gb);border-radius:99px;background:var(--gl)}
+.av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--cy));display:grid;place-content:center;font-weight:800;position:relative}
+.av::after{content:"";position:absolute;inset:auto auto 0 0;width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--bg)}
+.ib{width:42px;height:42px;border-radius:50%;border:1px solid var(--gb);background:var(--gl);padding:0;display:grid;place-content:center;position:relative}
+.ib i{position:absolute;top:8px;inset-inline-end:9px;width:8px;height:8px;border-radius:50%;background:#ff4d6d}
+.logo{display:flex;align-items:center;gap:4px;font-weight:800;font-size:20px;letter-spacing:1px}
+svg{display:block}
+button{font:inherit;cursor:pointer;border:1px solid var(--gb);border-radius:14px;padding:10px 14px;background:var(--gl);color:var(--tx);font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+button.p{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;box-shadow:0 6px 22px rgba(100,80,255,.45)}button.w{width:100%}
+input{font:inherit;width:100%;background:rgba(8,5,30,.6);color:var(--tx);border:1px solid var(--gb);border-radius:14px;padding:10px 12px;direction:ltr;text-align:left;min-width:0}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(24,201,124,.16);color:#5df0ae;border:1px solid rgba(24,201,124,.5);border-radius:99px;padding:3px 12px;font-size:12.5px;font-weight:600}
+.pr{font-size:18px;font-weight:800}.cr{color:var(--gd)}
+.hero{display:flex;align-items:center;gap:14px;justify-content:space-between}
+.ring{position:relative;width:118px;height:118px;flex:none;text-align:center}
+.ring b{position:absolute;inset:0;display:grid;place-content:center;font-size:34px;line-height:1}
+.ring+div{flex:1}
+.qr{display:grid;gap:8px;justify-items:center;flex:none}
+.qr svg{background:#fff;border-radius:12px;padding:6px;width:96px;height:96px}
+.qr button{padding:4px 10px;font-size:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid3 button{display:grid;gap:6px;justify-items:center;padding:12px 4px;font-size:12px;border-radius:16px}
+.grid3 svg,.ic{width:24px;height:24px;fill:none;stroke:var(--a1);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.srv{display:flex;align-items:center;gap:10px;background:rgba(8,5,30,.45);border:1px solid var(--gb);border-radius:14px;padding:8px 12px;margin-bottom:8px}
+.srv .g{font-size:22px}.srv .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.srv .ms{margin-inline-start:auto;color:#37e8a0;font-weight:600;direction:ltr}
+.kv{display:flex;justify-content:space-between;padding:9px 12px;background:rgba(8,5,30,.45);border:1px solid var(--gb);border-radius:12px;margin-bottom:6px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:5px;border-radius:16px;border:1px solid var(--gb);background:var(--gl);margin-top:10px}
+.seg button{border:0;background:none;padding:8px 2px;font-size:12.5px}.seg button.on{background:linear-gradient(135deg,var(--a1),var(--a2));box-shadow:0 4px 14px rgba(100,80,255,.4)}
+.plan{display:block;width:100%;text-align:right;border-radius:18px;padding:14px;margin-top:10px;background:var(--gl)}
+.plan.on{border-color:var(--cy);box-shadow:0 0 0 3px rgba(43,211,255,.18),0 0 24px rgba(123,92,255,.35)}
+.bar{height:8px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--a1),var(--cy))}
+.li{padding:10px 0;border-top:1px solid var(--gb)}.li:first-child{border-top:0}
+nav{position:fixed;inset:auto 0 0 0;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+nav div{pointer-events:auto;display:flex;max-width:456px;margin:auto;padding:6px;border-radius:24px;border:1px solid var(--gb);background:rgba(14,9,50,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+nav button{flex:1;border:0;background:none;font-size:11.5px;color:var(--mu);display:grid;gap:2px;justify-items:center;padding:7px 0;border-radius:18px}
+nav button.on{color:#fff;background:linear-gradient(135deg,rgba(123,92,255,.55),rgba(79,123,255,.4));box-shadow:0 0 18px rgba(123,92,255,.5)}
+nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#toast{position:fixed;inset-inline:16px;bottom:calc(100px + env(safe-area-inset-bottom,0px));background:#1b1450;border:1px solid var(--a1);padding:11px 16px;border-radius:14px;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s;max-width:448px;margin:auto}
+#toast.show{opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.tg{width:46px;height:26px;padding:0;border-radius:99px;position:relative;flex:none}.tg::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:inset-inline-start .2s}.tg.on{background:linear-gradient(135deg,var(--a1),var(--cy));border-color:transparent}.tg.on::after{inset-inline-start:23px}
+.cht{display:flex;align-items:flex-end;gap:8px;height:110px;margin-top:10px}.cht div{flex:1;display:grid;gap:4px;justify-items:center;align-items:end;height:100%;font-size:11px;color:var(--mu)}.cht i{display:block;width:100%;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,var(--cy),var(--a1));opacity:.85;min-height:6px}.cht div.t i{box-shadow:0 0 14px var(--cy);opacity:1}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}.chips button{flex:none;padding:6px 14px;font-size:12.5px}.chips button.on{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent}
+.srv{cursor:pointer;width:100%;text-align:right;color:var(--tx)}.srv.on{border-color:var(--cy);box-shadow:0 0 18px rgba(43,211,255,.25)}.srv .ld{width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}.srv .ld i{display:block;height:100%;background:var(--ok)}
+.faq{width:100%;text-align:right;border:0;background:none;border-top:1px solid var(--gb);border-radius:0;padding:12px 0}.faq div{color:var(--mu);font-weight:400;font-size:13px;margin-top:6px}
+.live{display:flex;align-items:center;gap:6px;font-size:12px;color:#5df0ae}.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.25}}
+.qr{display:grid;gap:8px;justify-items:center;flex:none}.qr svg{background:#fff;border-radius:12px;padding:6px;width:96px;height:96px}</style>
+</head>
+<body>
+<main id="app"><div class="card" style="text-align:center">در حال بارگذاری…</div></main>
+<nav><div id="nav"></div></nav>
+<div id="toast" role="status"></div>
+<script>
+const fa=n=>Number(n).toLocaleString('fa-IR'),$=id=>document.getElementById(id),tg=window.Telegram&&window.Telegram.WebApp;
+let TOKEN='',CFG={bot:'',support:''};
+const DISC={1:0,3:.08,6:.15,12:.25};
+const S={off:[],ct:[],qi:null,tab:'home',months:3,plan:0,coupon:'',qa:null,me:null,plans:[],wal:null,ref:null,faq:-1,busy:false};
+if(tg){try{tg.ready();tg.expand()}catch(e){}}
+async function api(p,o={}){const r=await fetch(p,{method:o.method||'GET',headers:{'Content-Type':'application/json',...(TOKEN?{Authorization:'Bearer '+TOKEN}:{})},body:o.body?JSON.stringify(o.body):undefined});let j={};try{j=await r.json()}catch(e){}if(!r.ok){const d=j.detail;throw new Error(typeof d=='string'?d:'خطای سرور')}return j}
+function toast(t){const e=$('toast');e.textContent=t;e.className='show';clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',2400)}
+function copy(t,m){try{navigator.clipboard.writeText(t)}catch(e){}toast(m)}
+const date=d=>d?new Date(d+'Z').toLocaleDateString('fa-IR'):'—';
+async function act(fn,ok){if(S.busy)return;S.busy=true;try{await fn();if(ok)toast(ok)}catch(e){toast(e.message)}S.busy=false;go()}
+async function load(){const[me,pl,wal,ref,net,off,ct]=await Promise.all([api('/me'),api('/plans'),api('/wallet'),api('/referral'),api('/referral/network'),api('/offers'),api('/content')]);Object.assign(S,{me,plans:pl,wal,ref,net,off,ct});if(S.plan>=pl.length)S.plan=0}
+function qr(u){try{const q=qrcode(0,'M');q.addData(u);q.make();return q.createSvgTag({scalable:true,margin:0})}catch(e){return ''}}
+const I={home:'<path d="M4 11l8-7 8 7v9H4z"/>',buy:'<path d="M6 7h13l-1.5 9H8zM6 7L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/>',wallet:'<rect x="3" y="6" width="18" height="13" rx="3"/><path d="M16 12.5h2"/>',invite:'<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M17 7v6M14 10h6"/>',set:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/>',ref:'<path d="M4 12a8 8 0 0114-5l2-2v6h-6l2-2a5 5 0 00-9 3M20 12a8 8 0 01-14 5l-2 2v-6h6l-2 2a5 5 0 009-3"/>'};
+const ic=n=>`<svg class="ic" viewBox="0 0 24 24">${I[n]}</svg>`;
+const TABS=[['home','داشبورد'],['buy','خرید'],['wallet','کیف پول'],['invite','دعوت'],['set','تنظیمات']];
+const logo=`<div class="logo" style="font-size:15px;letter-spacing:0"><svg width="30" height="26" viewBox="0 0 30 26"><defs><linearGradient id="lg" x1="0" x2="1"><stop stop-color="#9b7bff"/><stop offset="1" stop-color="#3f7bff"/></linearGradient></defs><path d="M24 7a10 10 0 1 0 0 12" fill="none" stroke="url(#lg)" stroke-width="4.5" stroke-linecap="round"/></svg>ConfigCompany</div>`;
+const local=()=>{const p=S.plans[S.plan];return p?Math.round(p.price_month*S.months*(1-DISC[S.months])/1000)*1000:0};
+const price=()=>S.qa!=null?S.qa:local();
+async function rq(){const p=S.plans[S.plan];if(!p)return;try{const q=await api('/shop/quote',{method:'POST',body:{plan_id:p.id,months:S.months,coupon:S.coupon||null}});S.qa=q.amount;S.qi=q.info}catch(e){S.qa=null;if(S.coupon){toast(e.message);S.coupon=''}}go()}
+const TG=(on,f)=>`<button class="tg ${on?'on':''}" role="switch" aria-checked="${!!on}" onclick="${f}"></button>`;
+function ring(s){const f=s.traffic_gb?Math.max(0,1-s.used_gb/s.traffic_gb):1,len=Math.round(236*f);return`<div class="ring"><svg width="118" height="118" viewBox="0 0 118 118"><defs><linearGradient id="rg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#2bd3ff"/><stop offset="1" stop-color="#7b5cff"/></linearGradient></defs><circle cx="59" cy="59" r="50" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/><circle cx="59" cy="59" r="50" fill="none" stroke="url(#rg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="${len} 314" transform="rotate(130 59 59)"/></svg><b>${s.traffic_gb?fa(Math.round(f*100))+'٪':'∞'}</b></div>`}
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const news=()=>S.ct.filter(c=>c.kind=='news').slice(0,3).map(c=>`<div class="card"><b>${esc(c.title)}</b><div class="mu">${esc(c.body)}</div></div>`).join('');
+const V={
+home:()=>{const m=S.me,s=m.subscription;return`<div class="top"><div class="pill"><div class="av">${esc((m.name||'؟')[0])}</div><span>${esc(m.name||'کاربر')}</span></div>${logo}</div>${m.maintenance?'<div class="card" style="border-color:var(--wr)">⚠️ سرویس موقتاً در حال تعمیر است؛ خرید و شارژ فعلاً غیرفعال است.</div>':''}${S.off.length?`<div class="card" style="border-color:var(--cy)">🎁 <b>${esc(S.off[0].title)}</b> — ${fa(S.off[0].percent)}٪ تخفیف تا ${date(S.off[0].ends_at)}</div>`:''}${news()}
+${s.active?`<div class="card hero"><div><span class="badge">● اشتراک فعال است</span><h1 style="margin-top:12px">${m.plan||'اشتراک'} <span class="cr">♛</span></h1><div class="mu">تاریخ انقضا: ${date(s.expires_at)} · ${fa(s.days_left)} روز مانده</div></div>${ring(s)}</div>
+<div class="mu" style="text-align:center;margin-top:6px">${s.traffic_gb?`مصرف: ${fa(s.used_gb)} از ${fa(s.traffic_gb)} گیگ`:'حجم: نامحدود'}</div>
+<div class="card"><h2>${ic('ref')} لینک اشتراک شما</h2><div class="hero" style="align-items:flex-start"><div class="qr">${qr(s.sub_url||'')}</div><div style="flex:1;min-width:0"><input readonly value="${s.sub_url||''}" aria-label="لینک اشتراک"><button class="p w" style="margin-top:8px" onclick="copy('${s.sub_url}','لینک اشتراک کپی شد')">کپی لینک</button><div class="mu" style="margin-top:8px">این لینک را در برنامه‌ی VPN خود وارد کنید.</div></div></div></div>
+<div class="card"><h2>${ic('set')} جزئیات اشتراک</h2><div class="kv"><span class="mu">پلن</span><b>${m.plan||'—'}</b></div><div class="kv"><span class="mu">تاریخ انقضا</span><b>${date(s.expires_at)}</b></div><div class="kv"><span class="mu">دستگاه مجاز</span><b>${fa(s.device_limit)}</b></div></div>
+<button class="p w" style="margin-top:14px" onclick="S.tab='buy';go()">تمدید اشتراک</button>`
+:`<div class="card" style="text-align:center"><h1>${m.plan?'اشتراک شما منقضی شده':'اشتراک فعالی ندارید'}</h1><div class="mu" style="margin:6px 0 14px">${m.trial_used?'برای شروع یک پلن انتخاب کنید.':'می‌توانید اول اکانت تست رایگان بگیرید.'}</div>${m.trial_used?'':`<button class="w" style="margin-bottom:8px" onclick="act(async()=>{await api('/me/trial',{method:'POST'});await load()},'اکانت تست فعال شد')">دریافت اکانت تست</button>`}${m.grace_available?`<button class="w" style="margin-bottom:8px" onclick="act(async()=>{await api('/me/grace',{method:'POST'});await load()},'دسترسی موقت فعال شد')">دسترسی موقت ${fa(m.grace_days)} روزه</button>`:''}<button class="p w" onclick="S.tab='buy';rq()">خرید اشتراک</button></div>`}`},
+buy:()=>`<h1>خرید یا تمدید</h1>
+<div class="seg">${[1,3,6,12].map(m=>`<button class="${S.months==m?'on':''}" onclick="S.months=${m};rq()">${fa(m)} ماه${DISC[m]?`<br><span class="mu" style="color:#d9d4ff">${fa(DISC[m]*100)}٪ تخفیف</span>`:''}</button>`).join('')}</div>
+${S.plans.map((p,i)=>`<button class="plan ${S.plan==i?'on':''}" onclick="S.plan=${i};rq()"><div class="row"><b>${p.name}</b><span class="pr">${fa(Math.round(p.price_month*S.months*(1-DISC[S.months])/1000)*1000)}<small class="mu"> تومان</small></span></div><div class="mu">${p.traffic_gb?fa(p.traffic_gb)+' گیگ':'نامحدود'} · ${fa(p.devices)} دستگاه</div></button>`).join('')}
+<div class="card"><div class="row" style="gap:8px"><input id="cp" placeholder="کد تخفیف" aria-label="کد تخفیف" value="${S.coupon}"><button onclick="S.coupon=$('cp').value.trim();rq()">اعمال</button></div>
+<div class="row" style="margin-top:14px"><span>مبلغ نهایی</span><span class="pr">${fa(price())} تومان</span></div>${S.qi&&S.qi.percent?`<div class="mu" style="color:var(--cy)">🎁 ${esc(S.qi.offer||'تخفیف گروه شما')}: ${fa(S.qi.percent)}٪ تخفیف اعمال شد</div>`:''}<div class="mu">پرداخت از کیف پول · موجودی: ${fa(S.me.balance)} تومان</div>
+<button class="p w" style="margin-top:12px" onclick="act(async()=>{const p=S.plans[S.plan];await api('/shop/buy',{method:'POST',body:{plan_id:p.id,months:S.months,coupon:S.coupon||null}});S.coupon='';S.qa=null;await load();S.tab='home'},'اشتراک فعال شد')">پرداخت و فعال‌سازی</button></div>`,
+wallet:()=>`<h1>کیف پول</h1><div class="card"><div class="mu">موجودی</div><div class="pr" style="font-size:30px">${fa(S.wal.balance)} <small class="mu">تومان</small></div>
+${CFG.pay_online?`<button class="p w" style="margin-top:12px" onclick="act(async()=>{const r=await api('/wallet/topup',{method:'POST',body:{amount:+$('ta').value,method:'gateway'}});if(tg&&tg.openLink)tg.openLink(r.pay_url);else location.href=r.pay_url})">پرداخت آنلاین (مبلغ را پایین وارد کنید)</button>`:''}<div class="mu" style="margin-top:12px">شارژ با کارت‌به‌کارت: مبلغ و شماره پیگیری را ثبت کنید تا ادمین تأیید کند.</div>
+<div class="row" style="gap:8px;margin-top:8px"><input id="ta" type="number" placeholder="مبلغ (تومان)" aria-label="مبلغ"><input id="tr" placeholder="شماره پیگیری" aria-label="شماره پیگیری"></div>
+<button class="p w" style="margin-top:8px" onclick="act(async()=>{await api('/wallet/topup',{method:'POST',body:{amount:+$('ta').value,receipt:$('tr').value}})},'درخواست ثبت شد؛ پس از تأیید ادمین اعمال می‌شود')">ثبت درخواست شارژ</button></div>
+<div class="card"><div class="row" style="gap:8px"><input id="gc" placeholder="کد هدیه" aria-label="کد هدیه"><button onclick="act(async()=>{await api('/wallet/gift',{method:'POST',body:{code:$('gc').value}});await load()},'کد هدیه اعمال شد')">ثبت</button></div></div>
+<h2 style="margin-top:18px">تراکنش‌ها</h2><div class="card" style="margin-top:0">${S.wal.transactions.map(t=>`<div class="li row"><span>${esc(t.note||t.kind)}</span><b dir="ltr" style="color:${t.amount>=0?'#37e8a0':'var(--wr)'}">${t.amount>0?'+':''}${fa(t.amount)}</b></div>`).join('')||'<div class="mu">هنوز تراکنشی ندارید.</div>'}</div>`,
+invite:()=>{const r=S.ref,l=`https://t.me/${S.me.bot||CFG.bot}?start=ref_${r.code}`;return`<h1>دعوت دوستان</h1><div class="card"><div class="mu">لینک اختصاصی شما</div><input readonly value="${l}" style="margin:8px 0" aria-label="لینک دعوت"><button class="p w" onclick="copy('${l}','لینک دعوت کپی شد')">کپی لینک دعوت</button></div>
+<h2 style="margin-top:18px">پاداش را چه بگیرم؟</h2><div class="seg" style="grid-template-columns:repeat(2,1fr);margin-top:0">${[['money','پول در کیف پول'],['days','روز اشتراک']].map(x=>`<button class="${r.reward_mode==x[0]?'on':''}" onclick="act(async()=>{await api('/me/settings',{method:'PATCH',body:{reward_mode:'${x[0]}'}});await load()})">${x[1]}</button>`).join('')}</div>
+<div class="card row"><span>کمیسیون فعلی</span><b>${fa(r.percent)}٪</b></div><div class="card"><b>شبکه دعوت</b>${[1,2,3].map(i=>`<div class="li row"><span>سطح ${fa(i)} · ${fa(r.levels[i-1])}٪ کمیسیون</span><b>${fa(S.net.counts[i-1])} نفر</b></div>`).join('')}${S.net.direct.map(d=>`<div class="li row"><span>${esc(d.name)}</span><span class="mu">${fa(d.spent)} تومان خرید</span></div>`).join('')}</div><div class="card row"><span>پاداش پولی تاکنون</span><b>${fa(r.earned)} تومان</b></div>`},
+set:()=>{const F=S.ct.filter(c=>['faq','rules','privacy'].includes(c.kind)).map(c=>[esc(c.title),esc(c.body)]);return`<h1>تنظیمات</h1>
+<div class="card"><div class="row"><div><b>تمدید خودکار</b><div class="mu">پیش از انقضا از کیف پول کسر می‌شود</div></div>${TG(S.me.auto_renew,"act(async()=>{await api('/me/settings',{method:'PATCH',body:{auto_renew:"+!S.me.auto_renew+"}});await load()})")}</div></div>
+<div class="card"><b>پرسش‌های متداول</b>${F.map((f,i)=>`<button class="faq" onclick="S.faq=S.faq==${i}?-1:${i};go()">${f[0]}${S.faq==i?`<div>${f[1]}</div>`:''}</button>`).join('')}${(S.me.support||CFG.support)?`<button class="p w" style="margin-top:10px" onclick="tg?tg.openTelegramLink('https://t.me/${(S.me.support||CFG.support)}'):0">ارتباط با پشتیبانی</button>`:''}</div>`}};
+function go(){if(!S.me)return;$('app').innerHTML=V[S.tab]();$('nav').innerHTML=TABS.map(t=>`<button class="${S.tab==t[0]?'on':''}" onclick="S.tab='${t[0]}';${t[0]=='buy'?'rq()':'go()'};scrollTo(0,0)"><svg viewBox="0 0 24 24">${I[t[0]]}</svg>${t[1]}</button>`).join('')}
+(async()=>{try{CFG=await api('/public/config');const init=(tg&&tg.initData)||(new URLSearchParams(location.search).get('dev')?'user='+encodeURIComponent('{"id":1,"first_name":"dev"}'):'');
+if(!init){$('app').innerHTML='<div class="card">این برنامه را از داخل ربات تلگرام باز کنید.</div>';return}
+TOKEN=(await api('/auth/telegram',{method:'POST',body:{init_data:init}})).token;await load();if(new URLSearchParams(location.search).get('paid')){S.tab='wallet';toast('پرداخت ثبت شد؛ موجودی به‌روز شد')}go()}catch(e){$('app').innerHTML=`<div class="card">${e.message}</div>`}})();
+</script>
+</body>
+</html>
